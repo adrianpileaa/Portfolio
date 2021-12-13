@@ -31,13 +31,14 @@ ALLOWED_HOSTS = ['adrian-pilea-portfolio.herokuapp.com', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'base',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'base'
+    'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles'   
 ]
 
 MIDDLEWARE = [
@@ -126,7 +127,7 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
