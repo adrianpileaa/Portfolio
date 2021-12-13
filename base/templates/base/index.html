@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+{% extends 'base/main.html' %}
+{% load static %}
+
+{% block content %}
+	<section class="s1">
+		<div class="main-container">
+			<div class="greeting-wrapper">
+				<h1>Hi, I'm Adrian Pilea</h1>
+			</div>
+			<div class="intro-wrapper">
+				{% include 'base/navbar.html' %}
+				<div class="left-column">
+					<img id="profile_pic" src="{% static 'images/Myself.jpeg' %}">
+					<h5 style="text-align: center; line-height: 0;">Personalize theme</h5>
+					<div id="theme-options-wrapper">
+						<div data-mode="light" id="light-mode" class="theme-dot"></div>
+						<div data-mode="blue" id="blue-mode" class="theme-dot"></div>
+						<div data-mode="green" id="green-mode" class="theme-dot"></div>
+						<div data-mode="purple" id="purple-mode" class="theme-dot"></div>
+					</div>
+					<p id="settings-note">*Theme settings will be saved for<br>your next visit</p>
+				</div>
+				<div class="right-column">
+					<div id="preview-shadow">	
+						<div id="preview">
+							<div id="corner-tl" class="corner"></div>
+							<div id="corner-tr" class="corner"></div>
+							<h3>What I Do</h3>
+							<p>My goal is to create fast websites that clearly communicate with visitors.</p>
+							<div id="corner-br" class="corner"></div>
+							<div id="corner-bl" class="corner"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="s2">
+		<div class="main-container">
+			<div class="about-wrapper">
+				<div class="about-me">
+					<h4>More about me</h4>
+					<p>
+						Currently learning to develop more of my technical background as I consider web development to be an incredibly creative discipline.
+					</p>
+					
+					<hr>
+					<h4>TOP EXPERTISE</h4>
+					<p>Fullstack Developer with primary focus on Django: <a target="_blank" href="{% static 'resume.pdf' %}" style="color:#17a2b8;">Download Resume</a></p>
+
+					<div id="skills">
+						<ul>
+							<li>Python</li>
+							<li>Django</li>
+							<li>JavaScript</li>
+							<li>HTML</li>
+							<li>CSS</li>
+						</ul>
+					</div>
+				</div>
+				<div class="social-links">
+					<div class="wrapper">
+						<div class="button">
+							<a target="_blank" href="https://www.linkedin.com/in/adrian-pilea-362756220/">
+								<div class="icon">
+									<i class="fab fa-linkedin"></i>
+								</div>
+								<span>LinkedIn</span>
+							</a>
+						</div>
+						<div class="button">
+							<a target="_blank" href="https://github.com/adrianpileaa">
+								<div class="icon">
+									<i class="fab fa-github-square"></i>
+								</div>
+								<span>Github</span>
+							</a>
+						</div>
+						<div class="button">
+							<a target="_blank" href="https://www.instagram.com/adrianpilea/">
+								<div class="icon">
+									<i class="fab fa-instagram"></i>
+								</div>
+								<span>Instagram</span>
+							</a>
+						</div>
+					</div>
+					<div class="dummy-txt">
+						<h5>There are the links where you can find me</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="s1">
+		<div class="main-container">
+			<h3 style="text-align:center;">Some of my Past Projects</h3>
+			<div class="post-wrapper">
+			{% for post in posts %}
+				<div>
+					<div class="post">
+						<img class="thumbnail" src="{{post.thumbnail.url}}">
+						<div class="post-preview">
+							<h6 class="post-title">{{post.headline}}</h6>
+							<p class="post-intro">{{post.sub_headline}}</p>
+							<a href="{% url 'post' pk=post.id %}">Read More</a>
+						</div>
+					</div>
+				</div>
+				{% empty %}
+					<h3>No posts found...</h3>
+				{% endfor %}
+			</div>
+			<p align="center">
+				<a href="{% url 'posts' %}">View More</a>
+			</p>
+		</div>
+	</section>
+
+	<section class="s2">
+		<div class="main-container">
+			<h3 style="text-align:center;">Get In Touh</h3>
+			<form id="contact-form" method="POST" action="{% url 'send_email' %}">
+				{% csrf_token %}
+				<label>Name</label>
+				<input class="input-field" type="text" name="name">
+				<label>Subject</label>
+				<input class="input-field" type="text" name="subject">
+				<label>Email</label>
+				<input class="input-field" type="text" name="email">
+				<label>Message</label>
+				<textarea class="input-field" type="text" name="message"></textarea>
+
+				<input id="submit-btn" type="submit" value="Send" >
+			</form>
+		</div>
+	</section>
+	<script type="text/javascript">
+		let static = "{% static 'css' %}"
+	</script>
+	<script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+{% endblock content %}
