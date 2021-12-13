@@ -140,7 +140,7 @@ ul{
 	height: 200px;
 	width: 200px;
 	border: 2px solid var(--borderColor);
-
+	object-fit: cover;
 }
 #theme-options-wrapper{
 	display: flex;
