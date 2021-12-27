@@ -17,7 +17,7 @@ class Post(models.Model):
 	active = models.BooleanField(default=False)
 	featured = models.BooleanField(default=False)
 	tags = models.ManyToManyField(Tag,blank=True)
-	#slug = models.SlugField(null=True, blank=True)
+	url = models.URLField(max_length = 300)
 
 	def __str__(self):
 		return self.headline
