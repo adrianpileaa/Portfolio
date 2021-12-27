@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'   
+    'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary'   
 ]
 
 MIDDLEWARE = [
@@ -121,7 +123,7 @@ USE_TZ = True
 import os
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/images/'
+MEDIA_URL = '/portfolio/'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
@@ -129,6 +131,14 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME' : 'dvfkb1gto',
+    'API_KEY' : '154697155238732',
+    'API_SECRET' : 'u1MLPNQwoTGlzJXxWVOg4ynLSUc'
+    }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
