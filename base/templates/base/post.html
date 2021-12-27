@@ -65,6 +65,12 @@
 		display: block;
 	}
 
+	.link-itself{
+		margin-top: 2rem;
+		margin-bottom: 2rem;
+		color: #17a2b8;
+	}
+
 	@media screen and (max-width: 900px){
 		.post-container{
 			width: 95%;
@@ -89,6 +95,7 @@
 	<br>
 
 	<p class="pp">{{post.body|safe}}</p>
+	<a class="link-itself" href="{{post.url}}">Go to Github</a>
 </div>
 
 {% endblock content %}
